@@ -33,6 +33,12 @@
   margin-left: 20px;
 }
 
+
+.Loading {
+  padding-left:40%;
+  margin-top: 20px;
+
+}
 .Date-range {
   margin-right: 10px;
 }
@@ -40,6 +46,7 @@
 .Upper-container {
   margin-bottom: 13px;
 }
+
 
 @keyframes App-logo-spin {
   from {

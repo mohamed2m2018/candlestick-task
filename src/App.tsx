@@ -5,10 +5,12 @@ import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 import useChartData from "./hooks/useChartData";
 import { options } from "./helpers";
 import IntervalInput from "./components/IntervalInput";
+import ReactLoading from "react-loading";
 
 function App() {
   const {
     setFirstDate,
+    isLoading,
     setSecondDate,
     setInterval,
     series,
@@ -47,7 +49,7 @@ function App() {
           handleReadRemoteFile={handleReadRemoteFile}
         />
       </div>
-      {series && (
+      {!isLoading && series ? (
         <div className="ChartContainer">
           <ReactApexChart
             options={options}
@@ -56,6 +58,14 @@ function App() {
             height={450}
           />
         </div>
+      ) : (
+          <ReactLoading
+            className="Loading"
+            width={"20%"}
+            color="black"
+            height={"20%"}
+            type="spin"
+          />
       )}
     </div>
   );
