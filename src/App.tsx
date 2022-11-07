@@ -39,7 +39,7 @@ function App() {
         <span className="Title">Please Select Range</span>
         <span className="Date-range">
           <DateRangePicker
-            minDate={new Date("2019-12-16")}
+            minDate={new Date("2019-12-18")}
             onChange={handleDateChange}
             value={value}
           />
