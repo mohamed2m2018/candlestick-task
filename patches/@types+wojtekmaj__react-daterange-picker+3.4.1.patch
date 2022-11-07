@@ -1,0 +1,13 @@
+diff --git a/node_modules/@types/wojtekmaj__react-daterange-picker/index.d.ts b/node_modules/@types/wojtekmaj__react-daterange-picker/index.d.ts
+index 87d9888..3ecea3b 100755
+--- a/node_modules/@types/wojtekmaj__react-daterange-picker/index.d.ts
++++ b/node_modules/@types/wojtekmaj__react-daterange-picker/index.d.ts
+@@ -32,7 +32,7 @@ export interface DateRangePickerProps<TValue extends string | Date = string | Da
+     nativeInputAriaLabel?: string | undefined;
+     onCalendarClose?: () => void | undefined;
+     onCalendarOpen?: () => void | undefined;
+-    onChange?: (value: TValue) => void | undefined;
++    onChange?: (value: Date []) => void | undefined;
+     onFocus?: (event: FocusEvent) => void | undefined;
+     openCalendarOnFocus?: boolean | undefined;
+     rangeDivider?: ReactNode | undefined;
