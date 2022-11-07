@@ -8,7 +8,8 @@ Demo:
 
 https://user-images.githubusercontent.com/33550035/200309917-29462214-e9eb-4a7d-b5ea-d2f4df5fb92e.mov
 
-
+Preview:
+https://candlestick-task-mb22ta1hc-muhammadsalah-clubfeastco.vercel.app/
 
 ## Available Scripts
 
