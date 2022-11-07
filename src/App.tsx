@@ -1,24 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import ReactApexChart from "react-apexcharts";
+import DateRangePicker from "@wojtekmaj/react-daterange-picker";
+import useChartData from "./hooks/useChartData";
+import { options } from "./helpers";
+import IntervalInput from "./components/IntervalInput";
 
 function App() {
+  const {
+    setFirstDate,
+    setSecondDate,
+    setInterval,
+    series,
+    oneYearAgo,
+    handleReadRemoteFile,
+  } = useChartData();
+  const [value, onChange] = useState<Date[]>([oneYearAgo, new Date()]);
+
+  const handleIntervalChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setInterval(event.target.value);
+  };
+
+  const handleDateChange = (input: Date[]) => {
+    const [firstInput, secondinput] = input;
+    setFirstDate(Math.ceil(firstInput.getTime() / 1000));
+    setSecondDate(Math.ceil(secondinput.getTime() / 1000));
+    onChange(input);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Candlestick Chart</h1>
+      <div className="Upper-container">
+        <span className="Title">Please Select Range</span>
+        <span className="Date-range">
+          <DateRangePicker
+            minDate={new Date("2019-12-16")}
+            onChange={handleDateChange}
+            value={value}
+          />
+        </span>
+        <IntervalInput
+          handleIntervalChange={handleIntervalChange}
+          handleReadRemoteFile={handleReadRemoteFile}
+        />
+      </div>
+      {series && (
+        <div className="ChartContainer">
+          <ReactApexChart
+            options={options}
+            series={series}
+            type="candlestick"
+            height={450}
+          />
+        </div>
+      )}
     </div>
   );
 }
